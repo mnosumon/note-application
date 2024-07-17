@@ -1,7 +1,7 @@
 import React from "react";
 
 const Data = () => {
-  return <div>Data</div>;
+  return <div>Index</div>;
 };
 
 export default Data;

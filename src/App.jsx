@@ -9,7 +9,7 @@ import RouteLayout from "./components/routeLayout/RouteLayout";
 import Home from "./pages/home/Index";
 import User from "./pages/user/Index";
 import Contact from "./pages/contact/Index";
-import Data from "./pages/data/Data";
+import Data from "./pages/data/Index";
 
 const App = () => {
   const router = createBrowserRouter(
