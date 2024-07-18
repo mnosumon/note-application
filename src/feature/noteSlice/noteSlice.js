@@ -18,8 +18,14 @@ export const noteSlice = createSlice({
       state.noteItem = [...state.noteItem, action.payload];
       localStorage.setItem("note", JSON.stringify(state.noteItem));
     },
+    noteDelete: (state, action) => {
+      state.noteItem = state.noteItem.filter(
+        (item) => item.id !== action.payload
+      );
+      localStorage.setItem("note", JSON.stringify(state.noteItem));
+    },
   },
 });
-export const { addNote } = noteSlice.actions;
+export const { addNote, noteDelete } = noteSlice.actions;
 
 export default noteSlice.reducer;

@@ -10,13 +10,17 @@ const Home = () => {
 
   let handlClick = (e) => {
     e.preventDefault();
-    let noteObject = {
-      id: Date.now().toString(32),
-      title,
-      description,
-      time: new Date().toString(),
-    };
-    dispatch(addNote(noteObject));
+    if (title !== "" && description !== "") {
+      let noteObject = {
+        id: Date.now().toString(32),
+        title,
+        description,
+        time: new Date().toString(),
+      };
+      dispatch(addNote(noteObject));
+      setTitle("");
+      setDescription("");
+    }
   };
   return (
     <>
@@ -28,12 +32,14 @@ const Home = () => {
             </h1>
             <form action="">
               <input
+                value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Name"
                 type="text"
                 className="w-full py-3 px-5 outline-none border rounded-md border-blue-500 "
               />
               <textarea
+                value={description}
                 maxLength={400}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
