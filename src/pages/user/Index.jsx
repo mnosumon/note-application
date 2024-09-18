@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { noteDelete } from "../../feature/noteSlice/noteSlice";
 import Modal from "./Modal";
-import { format, formatDistance, formatRelative, subDays } from "date-fns";
-// import Moment from "react-moment";
+// import { format, formatDistance, formatRelative, subDays } from "date-fns";
+import moment from "moment";
 
 const User = () => {
   let [noteShow, setNoteShow] = useState(6);
@@ -56,9 +56,10 @@ const User = () => {
               <h2 className="text-4xl font-mono font-bold">{note.title}</h2>
               <p className="font-serif leading-6 my-4">{note.description}</p>
               <span>
-                {formatDistance(note.time, new Date(), {
+                {/* {formatDistance(note.time, new Date(), {
                   addSuffix: true,
-                })}
+                })} */}
+                {moment(note.time).fromNow()}
               </span>
               <div className="flex items-center justify-end gap-4">
                 <button
