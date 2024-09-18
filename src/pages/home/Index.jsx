@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNote } from "../../feature/noteSlice/noteSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
   let [title, setTitle] = useState("");
@@ -20,10 +21,32 @@ const Home = () => {
       dispatch(addNote(noteObject));
       setTitle("");
       setDescription("");
+      toast.success("Note successfully added", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    } else {
+      toast.error("fill up your details", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
   return (
     <>
+      <ToastContainer />
       <div className="container">
         <div className="w-full h-screen flex items-center justify-center">
           <div className="w-1/4 shadow-md rounded-md p-6">
@@ -45,7 +68,7 @@ const Home = () => {
                 rows={4}
                 className="w-full py-3 px-5 outline-none border rounded-md border-blue-500 resize-none my-3"
                 placeholder="Type your note"
-              ></textarea>
+              />
               <button
                 onClick={handlClick}
                 className="text-xl bg-orange-500 text-white px-6 py-2 rounded-md"

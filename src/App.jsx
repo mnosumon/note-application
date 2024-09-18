@@ -10,6 +10,7 @@ import Home from "./pages/home/Index";
 import User from "./pages/user/Index";
 import Contact from "./pages/contact/Index";
 import Data from "./pages/data/Index";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const router = createBrowserRouter(

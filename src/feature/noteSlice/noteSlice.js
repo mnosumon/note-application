@@ -24,8 +24,19 @@ export const noteSlice = createSlice({
       );
       localStorage.setItem("note", JSON.stringify(state.noteItem));
     },
+    updateValue: (state, action) => {
+      let { id, title, description, time } = action.payload;
+      let note = state.noteItem.find((item) => item.id == id);
+      if (note) {
+        note.time = time;
+        note.title = title;
+        note.description = description;
+        note.time = time;
+        localStorage.setItem("note", JSON.stringify(state.noteItem));
+      }
+    },
   },
 });
-export const { addNote, noteDelete } = noteSlice.actions;
+export const { addNote, noteDelete, updateValue } = noteSlice.actions;
 
 export default noteSlice.reducer;
